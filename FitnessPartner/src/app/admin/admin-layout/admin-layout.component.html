@@ -1,0 +1,66 @@
+<div class="admin-dashboard">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h3>Admin Dashboard</h3>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a routerLink="/admin/dashboard" routerLinkActive="active">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/products" routerLinkActive="active">
+            <i class="fas fa-box-open"></i> Products
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/users" routerLinkActive="active">
+            <i class="fas fa-users"></i> Users
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/orders" routerLinkActive="active">
+            <i class="fas fa-shopping-cart"></i> Orders
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/trainers" routerLinkActive="active">
+            <i class="fas fa-dumbbell"></i> Trainers
+          </a>
+        </li>
+        <li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="content">
+    <!-- Top Header Bar -->
+    <header class="content-header">
+      <div class="breadcrumb">
+        <span>Admin</span>
+        <span> / </span>
+        <span>{{ activeSectionTitle }}</span>
+      </div>
+      <div class="header-actions">
+        <div class="admin-profile" (click)="toggleProfileMenu()">
+          <img src="assets/adminProfile.jfif" alt="Admin">
+          <span>Admin</span>
+          <i class="fas fa-chevron-down"></i>
+          <div class="profile-dropdown" *ngIf="showProfileMenu">
+            <a routerLink="/profile/settings">My Profile</a>
+            <a (click)="logout()">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dynamic Content Container -->
+    <div class="content-body">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

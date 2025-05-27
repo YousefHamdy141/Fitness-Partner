@@ -1,0 +1,279 @@
+<div
+  class="card shadow-lg p-4 rounded-4 mx-auto my-5 bg-light border-0"
+  style="max-width: 500px; width: 90%"
+>
+  <h2 class="fw-bold text-center text-primary mb-4">
+    {{ "signUp.h2" | translate }}
+  </h2>
+
+  <!-- Registration Form -->
+  <form
+    *ngIf="!showOtpForm"
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+    class="row g-3"
+  >
+    <!-- First Name -->
+    <div class="col-md-6">
+      <label for="fName" class="form-label fw-semibold">{{
+        "signUp.label1" | translate
+      }}</label>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0"
+          ><i class="fas fa-user text-secondary"></i
+        ></span>
+        <input
+          type="text"
+          class="form-control border-start-0"
+          id="fName"
+          formControlName="fName"
+          placeholder="{{ 'signUp.placeholder1' | translate }}"
+        />
+      </div>
+      <div
+        *ngIf="fName?.invalid && fName?.touched && fName?.errors?.['required']"
+        class="text-danger mt-1 small"
+      >
+        {{ "signUp.invalid1" | translate }}
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="col-md-6">
+      <label for="lName" class="form-label fw-semibold">{{
+        "signUp.label2" | translate
+      }}</label>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0"
+          ><i class="fas fa-user text-secondary"></i
+        ></span>
+        <input
+          type="text"
+          class="form-control border-start-0"
+          id="lName"
+          formControlName="lName"
+          placeholder="{{ 'signUp.placeholder2' | translate }}"
+        />
+      </div>
+      <div
+        *ngIf="lName?.invalid && lName?.touched && lName?.errors?.['required']"
+        class="text-danger mt-1 small"
+      >
+        {{ "signUp.invalid2" | translate }}
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="col-12">
+      <label for="email" class="form-label fw-semibold">{{
+        "signUp.label3" | translate
+      }}</label>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0"
+          ><i class="fas fa-envelope text-secondary"></i
+        ></span>
+        <input
+          type="email"
+          class="form-control border-start-0"
+          id="email"
+          formControlName="email"
+          placeholder="{{ 'signUp.placeholder3' | translate }}"
+        />
+      </div>
+      <div
+        *ngIf="email?.invalid && email?.touched"
+        class="text-danger mt-1 small"
+      >
+        <div *ngIf="email?.errors?.['required']">
+          {{ "signUp.invalid3" | translate }}
+        </div>
+        <div *ngIf="email?.errors?.['found']">
+          {{ "signUp.errors.error1" | translate }}
+        </div>
+        <div *ngIf="!email?.errors?.['required'] && !email?.errors?.['found']">
+          {{ "signUp.errors.error2" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="col-12">
+      <label for="password" class="form-label fw-semibold">
+        {{ "signUp.label4" | translate }}
+      </label>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0"
+          ><i class="fas fa-lock text-secondary"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control border-start-0"
+          id="password"
+          formControlName="password"
+          placeholder="{{ 'signUp.placeholder4' | translate }}"
+        />
+      </div>
+      <div
+        *ngIf="password?.invalid && password?.touched"
+        class="text-danger mt-1 small"
+      >
+        <div *ngIf="password?.errors?.['required']">
+          {{ "signUp.invalid4" | translate }}
+        </div>
+        <div *ngIf="password?.errors?.['minlength']">
+          {{ "signUp.hint" | translate }}
+        </div>
+        <div *ngIf="password?.errors?.['pattern']">
+          {{ "signUp.error" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="col-12">
+      <label for="confirmPassword" class="form-label fw-semibold">{{
+        "signUp.confirm" | translate
+      }}</label>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0"
+          ><i class="fas fa-lock text-secondary"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control border-start-0"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder="{{ 'signUp.placeholder5' | translate }}"
+        />
+      </div>
+      <div
+        *ngIf="registerForm?.errors?.['passwordMismatch'] && registerForm?.touched"
+        class="text-danger mt-1 small"
+      >
+        {{ "signUp.diffPassword" | translate }}
+      </div>
+    </div>
+
+    <!-- Login link -->
+    <div class="col-12 text-center mt-2">
+      <p class="small mb-1">
+        {{ "signUp.p" | translate }}
+        <a
+          routerLink="/login"
+          class="text-decoration-none fw-bold text-primary"
+          >{{ "signUp.btn1" | translate }}</a
+        >
+      </p>
+    </div>
+
+    <!-- Submit button -->
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-outline-light orange-btn fw-semibold fw-bold w-100 py-2 text-white border-0"
+        [disabled]="registerForm.invalid"
+      >
+        {{ "signUp.btn2" | translate }}
+      </button>
+    </div>
+
+    <div class="d-flex align-items-center my-3">
+      <hr class="flex-grow-1" />
+      <span class="mx-2 text-muted small">{{ "signUp.span" | translate }}</span>
+      <hr class="flex-grow-1" />
+    </div>
+
+    <!-- Google Auth -->
+    <div class="d-flex justify-content-center mb-3">
+      <div id="google-signup-button"></div>
+    </div>
+  </form>
+
+  <!-- OTP Verification Form -->
+  <form
+    *ngIf="showOtpForm"
+    [formGroup]="otpForm"
+    (ngSubmit)="verifyOtp()"
+    class="row g-3"
+  >
+    <div class="col-12 text-center mb-2">
+      <h4 class="fw-semibold">{{ "OTP.h4" | translate }}</h4>
+      <p class="text-muted">
+        {{ "OTP.p1" | translate }}<strong>{{ registeredEmail }}</strong>
+      </p>
+    </div>
+
+    <!-- OTP Input -->
+    <div class="col-12">
+      <label for="otp" class="form-label fw-semibold">{{
+        "OTP.label1" | translate
+      }}</label>
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0"
+          ><i class="fas fa-key text-secondary"></i
+        ></span>
+        <input
+          type="text"
+          class="form-control border-start-0 text-center fs-5 letter-spacing-2"
+          id="otp"
+          formControlName="otp"
+          placeholder="000000"
+          maxlength="6"
+        />
+      </div>
+      <div *ngIf="otp?.invalid && otp?.touched" class="text-danger mt-1 small">
+        <div *ngIf="otp?.errors?.['required']">
+          {{ "OTP.invalid1" | translate }}
+        </div>
+        <div *ngIf="otp?.errors?.['minlength'] || otp?.errors?.['maxlength']">
+          {{ "OTP.error1" | translate }}
+        </div>
+        <div *ngIf="otp?.errors?.['pattern']">
+          {{ "OTP.error2" | translate }}
+        </div>
+      </div>
+      <div *ngIf="otpError" class="text-danger mt-1 small">{{ otpError }}</div>
+    </div>
+
+    <!-- Resend OTP -->
+    <div class="col-12 text-center">
+      <p class="small mb-1">
+        {{ "OTP.p2" | translate }}
+        <button
+          type="button"
+          class="btn btn-link text-decoration-none p-0 fw-bold text-primary"
+          (click)="resendOtp()"
+        >
+          {{ "OTP.p2" | translate }}
+        </button>
+      </p>
+      <p *ngIf="otpResent" class="text-success small">
+        {{ "OTP.btn1" | translate }}
+      </p>
+    </div>
+
+    <!-- Back to signup -->
+    <div class="col-12 text-center">
+      <p class="small mb-1">
+        <button
+          type="button"
+          class="btn btn-link text-decoration-none p-0"
+          (click)="backToSignup()"
+        >
+          {{ "OTP.btn2" | translate }}
+        </button>
+      </p>
+    </div>
+
+    <!-- Verify button -->
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-outline-light orange-btn fw-semibold fw-bold w-100 py-2 text-white border-0"
+        [disabled]="otpForm.invalid"
+      >
+      {{ "OTP.btn3" | translate }}
+    </button>
+    </div>
+  </form>
+</div>

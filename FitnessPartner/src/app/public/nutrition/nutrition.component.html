@@ -1,0 +1,168 @@
+<div class="container mt-5 mb-3">
+  <h2
+    class="text-center fw-bold fs-1 mb-5"
+    style="color: #ff9933"
+    data-aos="fade-down"
+    data-aos-duration="1000"
+  >
+    {{ "nutrition.h2" | translate }}
+  </h2>
+  <!-- Food Mode Section -->
+  <div class="row justify-content-center">
+    <div
+      class="col-md-3 mb-4"
+      *ngFor="let nutrient of nutrients"
+      (click)="goToDetails(nutrient)"
+      data-aos="fade-down"
+      data-aos-duration="1000"
+    >
+      <div class="card h-100 shadow-sm" style="cursor: pointer">
+        <img
+          [src]="nutrient.image"
+          class="card-img-top"
+          alt="{{ nutrient.title }}"
+          style="height: 200px; object-fit: cover"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title" style="color: #343a40">
+            {{ nutrient.title }}
+          </h5>
+          <p class="card-text" style="color: #6c757d">
+            {{ nutrient.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Choose section-->
+  <div class="row">
+    <div class="col-11" data-aos="fade-right" data-aos-duration="1000">
+      <p class="fs-4 mt-md-5">
+        {{ "nutrition.choose.p1" | translate }}
+      </p>
+      <p class="fs-4 mb-md-5">{{ "nutrition.choose.p2" | translate }}</p>
+    </div>
+    <!--Cards-->
+    <div
+      class="col-md-6 col-lg-4 d-flex flex-column align-items-center"
+      style="background-color: #fd650dd9"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <!-- icon -->
+      <i class="fa-solid fa-robot second-icon mt-4"></i>
+      <h4 class="text-center fw-bold my-3">
+        <!-- {{ "nutrition.cards.card1.h4" | translate }} -->
+          AI Meal Planner
+      </h4>
+      <p class="px-5 fs-5 fw-medium">
+        <!-- {{ "nutrition.cards.card1.p" | translate }} -->
+        let our AI build a customized meal plan based on your personal data, InBody results, and goals
+      </p>
+      <a
+        [routerLink]="['/nutrition']"
+        fragment="fat-calculator"
+        class="btn button-design"
+        style="margin-top: 5.2rem;"
+      >
+        <!-- {{ "nutrition.cards.card1.link" | translate }} -->
+          Use AI Meal Planner
+      </a>
+    </div>
+    <div
+      class="col-md-6 col-lg-4 d-flex flex-column align-items-center"
+      style="background-color: #ff7e33d9"
+      data-aos="fade-down"
+      data-aos-duration="1000"
+    >
+      <!-- icon -->
+      <i class="fa-solid fa-utensils second-icon mt-4"></i>
+      <h4 class="text-center fw-bold my-3">
+        {{ "nutrition.cards.card3.h4" | translate }}
+      </h4>
+      <p class="px-5 fs-5 fw-medium">
+        Take the stress out of eating right. Choose from carefully designed meal plans — whether your goal is fat loss, muscle gain, or better health
+      </p>
+      <a
+        [routerLink]="['/nutrition']"
+        fragment="meal-planner"
+        class="btn button-design mt-4"
+      >
+        {{ "nutrition.cards.card3.link" | translate }}
+      </a>
+    </div>
+    <div
+      class="col-md-6 col-lg-4 d-flex flex-column align-items-center"
+      style="background-color: #ff9933b3"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <!-- icon -->
+      <i class="fa-solid fa-carrot second-icon mt-4"></i>
+      <h4 class="text-center fw-bold my-3">
+        {{ "nutrition.cards.card2.h4" | translate }}
+      </h4>
+      <p class="px-5 fs-5 fw-medium">
+        <strong>Want to know what’s in your food?</strong> Just search items like apples or chicken in Know Your Food and get quick nutrition facts calories, fats, proteins, and more to help you eat smarter.
+      </p>
+      <a
+        [routerLink]="['/nutrition']"
+        fragment="know-food"
+        class="btn button-design mb-2"
+        >
+        {{ "nutrition.cards.card2.link" | translate }}
+      </a>
+    </div>
+  </div>
+</div>
+<!--Choose section end-->
+
+<!-- AI diet tool Section -->
+<div class="container py-4 my-5">
+  <h2 class="text-center fw-bold fs-1" style="color: #ff9933">
+    🤖Your Personalized Meal Planner
+  </h2>
+  <p class="text-center text-secondary fs-5 mb-4">
+    {{ "trainers.ai.p" | translate }}
+  </p>
+  <div class="row mb-4" id="fat-calculator">
+    <div class="col-md-7">
+      <app-diet-form></app-diet-form>
+    </div>
+    <div class="col-md-5 mt-3" data-aos="fade-left" data-aos-duration="1000">
+      <img
+        src="assets/nutrition-imgs/body-fat-1.svg"
+        alt="Body Fat Calculator"
+        class="img-fluid"
+      />
+    </div>
+  </div>
+
+  <div class="divider-with-text">
+    <span class="divider-text">
+     OR
+    </span>
+  </div>
+  <!-- Meal Planner Section -->
+  <div class="row my-4" id="meal-planner">
+    <div class="col-12">
+      <app-meals-planner></app-meals-planner>
+    </div>
+  </div>
+
+  <hr>
+  <!-- Food Nutrition Section -->
+  <div class="row mb-4" id="know-food">
+    <div class="col-12">
+      <app-food-nutrition></app-food-nutrition>
+    </div>
+  </div>
+
+
+  <!-- Meal Comparison Section -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <app-meal-comparison></app-meal-comparison>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container mb-4">
+  <h2 class="text-center fw-bold fs-1 mb-4" style="color: #ff9933">
+    Choose your goal, define your meal
+  </h2>
+
+  <label for="goal" class="form-label fs-5">
+    {{ "nutrition.mealsPlanner.label" | translate }}
+  </label>
+  <select id="goal" class="form-select p-2 focus-ring focus-ring-warning border-warning border-2 fs-5"
+    [(ngModel)]="selectedGoal" (change)="onGoalChange()" style="cursor: pointer;">
+    <option value="" disabled selected>
+      {{ "nutrition.mealsPlanner.option" | translate }}
+    </option>
+    <option *ngFor="let g of goals" [value]="g">{{ g }}</option>
+  </select>
+
+  <ng-container *ngIf="plan; else noPlan">
+    <h2 class="my-4">
+      {{ "nutrition.mealsPlanner.target" | translate }}
+      <span class="" style="color: #c93e18">{{ plan.target }}</span>
+    </h2>
+
+    <div class="table-responsive">
+      <table class="table table-warning table-striped table-bordered align-middle">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">
+              {{ "nutrition.mealsPlanner.heads.th1" | translate }}
+            </th>
+            <th scope="col">
+              {{ "nutrition.mealsPlanner.heads.th2" | translate }}
+            </th>
+            <th scope="col">
+              {{ "nutrition.mealsPlanner.heads.th3" | translate }}
+            </th>
+            <th scope="col">
+              {{ "nutrition.mealsPlanner.heads.th4" | translate }}
+            </th>
+            <th scope="col">
+              {{ "nutrition.mealsPlanner.heads.th5" | translate }}
+            </th>
+            <th scope="col">
+              {{ "nutrition.mealsPlanner.heads.th6" | translate }}
+            </th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider text-center">
+          <tr *ngFor="let key of mealKeys">
+            <td class="meal-type">{{ key | titlecase }}</td>
+            <td class="items-cell">
+              <div *ngFor="let item of plan.plan[key].items" class="item-inline">
+                <img [src]="item.image" alt="{{ item.name }}" class="item-thumb" />
+                <span class="fw-semibold">{{ item.name }}</span> <br />
+                <small class="text-muted fst-italic">({{ item.quantity }})</small>
+                <br /><br />
+              </div>
+            </td>
+            <td>{{ plan.plan[key].calories }}</td>
+            <td>{{ plan.plan[key].protein }}</td>
+            <td>{{ plan.plan[key].carbs }}</td>
+            <td>{{ plan.plan[key].fats }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+  <ng-template #noPlan>
+    <div class="alert alert-warning mt-4">
+      {{ "nutrition.mealsPlanner.alert" | translate }}
+    </div>
+  </ng-template>
+</div>

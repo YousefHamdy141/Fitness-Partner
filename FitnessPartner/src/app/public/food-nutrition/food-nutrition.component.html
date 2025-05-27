@@ -1,0 +1,81 @@
+<div class="container my-5">
+  <h2 class="text-center fw-bold fs-1" style="color: #ff9933">
+    {{ "nutrition.food.h2" | translate }}
+  </h2>
+  <p class="text-center mb-4 text-muted fs-5">
+    {{ "nutrition.food.p1" | translate }}
+  </p>
+
+  <div class="row">
+    <div class="col-12 col-lg-9 m-auto">
+      <input
+        type="text"
+        class="form-control mb-4 focus-ring focus-ring-warning border-warning border-2"
+        placeholder="
+      {{ 'nutrition.food.placeholder' | translate }}
+      "
+        [(ngModel)]="searchTerm"
+      />
+      <div class="row d-flex justify-content-center">
+        <div
+          class="row d-flex justify-content-center col-md-8"
+          *ngIf="searchTerm && filteredFoods().length > 0"
+        >
+          <div class="col-md-10 mb-4" *ngFor="let food of filteredFoods()">
+            <div class="card shadow-sm p-2">
+              <div class="row">
+                <div class="col-4 mt-3">
+                  <img [src]="food.image" class="card-img-top" alt="food" />
+                </div>
+                <div class="col-8">
+                  <div class="card-body">
+                    <h4 class="card-title text-center">{{ food.name }}</h4>
+                    <ul class="list-unstyled text-center">
+                      <li>
+                        <strong>
+                          {{ "nutrition.food.li1" | translate }}
+                        </strong>
+                        {{ food.calories }}
+                        {{ "nutrition.food.unit1" | translate }}
+                      </li>
+                      <li>
+                        <strong>{{ "nutrition.food.li2" | translate }}</strong>
+                        {{ food.protein }}
+                        {{ "nutrition.food.unit2" | translate }}
+                      </li>
+                      <li>
+                        <strong>{{ "nutrition.food.li3" | translate }}</strong>
+                        {{ food.carbs }}
+                        {{ "nutrition.food.unit2" | translate }}
+                      </li>
+                      <li>
+                        <strong>{{ "nutrition.food.li4" | translate }}</strong>
+                        {{ food.fat }} {{ "nutrition.food.unit2" | translate }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <img
+            src="assets/nutrition-imgs/calorie-1.svg"
+            alt=""
+            class="img-fluid"
+          />
+        </div>
+      </div>
+      <div
+        *ngIf="searchTerm && filteredFoods().length === 0"
+        class="text-center text-muted mt-4 fs-4 fw-bold"
+      >
+        {{ "nutrition.food.msg" | translate }}
+        🍽️
+      </div>
+    </div>
+
+    <hr />
+  </div>
+</div>

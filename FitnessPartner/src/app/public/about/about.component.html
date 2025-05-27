@@ -1,0 +1,114 @@
+<app-loading-spinner
+  *ngIf="isLoading"
+  [message]="'about.loadingMsg' | translate"
+></app-loading-spinner>
+
+<div class="container-fluid p-0 position-relative">
+  <img
+    src="assets/about-us/aboutUs.jpg"
+    class="img-fluid w-100 cover-img-style"
+  />
+  <div
+    class="overlay-text d-flex justify-content-center align-items-center flex-column"
+  >
+    <h1 class="display-3 fw-bold text-white mb-3">
+      {{ "about.h1" | translate }}
+    </h1>
+    <p class="h3">{{ "about.p1" | translate }}</p>
+  </div>
+</div>
+
+<div class="container mt-5 mb-3">
+  <div class="row">
+    <div class="col-md-7" data-aos="fade-right" data-aos-duration="1000">
+      <h2 class="text-center fw-bold fs-1" style="color: #ff9933">
+        {{ "about.h2.1" | translate }}
+      </h2>
+      <p class="fs-4 my-md-5">
+        {{ "about.p2" | translate }}
+      </p>
+    </div>
+    <div class="col-md-5 my-md-5" data-aos="fade-left" data-aos-duration="1000">
+      <img src="assets/about-us/img.jpg" class="img-fluid rounded-5" />
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <h2 class="text-center fw-bold fs-1 my-3" style="color: #ff9933">
+      {{ "about.h2.2" | translate }}
+    </h2>
+    <div
+      class="col-md-6 d-flex flex-column align-items-center mt-lg-3 text-white"
+      style="background-color: #010101"
+      data-aos="fade-right"
+      data-aos-duration="1000"
+    >
+      <!-- icon -->
+      <i class="fa-solid fa-hand-sparkles gradient-icon mt-4"></i>
+      <h4 class="text-center fw-bold my-3" style="color: #ff9933">
+        {{ "about.h4.1" | translate }}
+      </h4>
+      <p class="px-5 pb-4 fs-5">
+        {{ "about.p3" | translate }}
+      </p>
+    </div>
+    <div
+      class="col-md-6 d-flex flex-column align-items-center mt-lg-3 text-white"
+      style="background-color: #1e1d1d"
+      data-aos="fade-left"
+      data-aos-duration="1000"
+    >
+      <!-- icon -->
+      <i class="fa-solid fa-capsules gradient-icon mt-4"></i>
+      <h4 class="text-center fw-bold my-3" style="color: #ff9933">
+        {{ "about.h4.2" | translate }}
+      </h4>
+      <p class="px-5 fs-5">
+        {{ "about.p4" | translate }}
+      </p>
+    </div>
+    <div
+      class="col-md-4 d-flex flex-column align-items-center"
+      style="background-color: #fd650dd9"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <!-- icon -->
+      <i class="fa-solid fa-dumbbell second-icon mt-4"></i>
+      <h4 class="text-center fw-bold my-3">{{ "about.h4.3" | translate }}</h4>
+      <p class="px-5 fs-5 fw-medium">
+        {{ "about.p5" | translate }}
+      </p>
+    </div>
+    <div
+      class="col-md-4 d-flex flex-column align-items-center"
+      style="background-color: #ff7e33d9"
+      data-aos="fade-down"
+      data-aos-duration="1000"
+    >
+      <!-- icon -->
+      <i class="bi bi-fire second-icon mt-2"></i>
+      <h4 class="text-center fw-bold my-3">
+        {{ "about.h4.4" | translate }}
+      </h4>
+      <p class="px-5 fs-5 fw-medium">
+        {{ "about.p6" | translate }}
+      </p>
+    </div>
+    <div
+      class="col-md-4 d-flex flex-column align-items-center"
+      style="background-color: #ff9933b3"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <!-- icon -->
+      <i class="fa-solid fa-utensils gradient-icon mt-4"></i>
+      <h4 class="text-center fw-bold my-3">{{ "about.h4.5" | translate }}</h4>
+      <p class="px-5 fs-5 fw-medium">
+        {{ "about.p7" | translate }}
+      </p>
+    </div>
+  </div>
+</div>

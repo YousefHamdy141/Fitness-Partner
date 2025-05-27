@@ -1,0 +1,38 @@
+<h3>Favorite Products</h3>
+<br>
+<div class="products-list">
+  <div class="product-card" *ngFor="let product of products">
+    <a [routerLink]="['/products', product.id]">
+      <div class="product-images">
+        <img [src]="product.image" alt="{{ product.name }}" />
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+  .products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-card {
+    width: 250px;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .product-card img {
+    width: 100%;
+    border-radius: 6px;
+  }
+  .product-card:hover {
+    transform: scale(1.05);
+  }
+  .product-info {
+    margin-top: 0.5rem;
+  }
+</style>
